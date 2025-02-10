@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.18)
+project(strip VERSION 0.0.1 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+set(SOURCEMETA_CORE_JSONL OFF CACHE BOOL "no JSONL")
+add_subdirectory(vendor/core)
+add_executable(keywords keywords.cc)
+target_link_libraries(keywords PRIVATE sourcemeta::core::json)
+target_link_libraries(keywords PRIVATE sourcemeta::core::yaml)
+target_link_libraries(keywords PRIVATE sourcemeta::core::jsonschema)
